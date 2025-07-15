@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Registered Users</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container mt-4">
+      <h2>Registered Users</h2>
+      <table class="table table-bordered mt-3">
+        <thead>
+          <tr>
+            <th>User ID</th>
+            <th>Username</th>
+            <th>Full Name</th>
+            <th>Mobile Number</th>
+            <th>Current Parking</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in users %}
+          <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.fullname }}</td>
+            <td>{{ user.mobile_number }}</td>
+            <td>
+              {% if user.id in reservation_map %} Lot: {{
+              reservation_map[user.id].spot.lot.location_name }}<br />
+              Spot ID: {{ reservation_map[user.id].spot.id }}<br />
+              Since: {{ reservation_map[user.id].start_time.strftime("%Y-%m-%d
+              %H:%M") }} {% else %}
+              <span class="badge bg-secondary">No active reservation</span>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <a href="/admin" class="btn btn-primary">Back to Admin Dashboard</a>
+    </div>
+  </body>
+</html>

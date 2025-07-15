@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Parking Spots for Lot {{ lot.id }}</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container mt-4">
+      <h3>Parking Spots for Lot: {{ lot.location_name }}</h3>
+      <p>
+        {{ lot.address }} | ₹{{ lot.price_per_hour }}/hr | Max Spots: {{
+        lot.max_spots }}
+      </p>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Spot ID</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for spot in spots %}
+          <tr>
+            <td>{{ spot.id }}</td>
+            <td>
+              {% if spot.status == 'A' %}
+              <span class="badge bg-success">Available</span>
+              {% else %}
+              <span class="badge bg-danger">Occupied</span>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <a href="/admin" class="btn btn-secondary mt-3"
+        >Back to Admin Dashboard</a
+      >
+    </div>
+  </body>
+</html>

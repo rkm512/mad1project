@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Occupied Parking Spot Details</title>
+    <link rel="stylesheet" href="/mad1_project/static/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="main">
+      <div id="canvas" style="height: 600px">
+        <div class="card-header bg-warning">
+          <strong>Occupied Parking Spot Details</strong>
+        </div>
+
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">ID:</label>
+            <input type="text" class="form-control" value="{{ spot.id }}" />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Customer ID:</label>
+            <input
+              type="text"
+              class="form-control"
+              value="{{ spot.customer_id }}"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Vehicle Number:</label>
+            <input
+              type="text"
+              class="form-control"
+              value="{{ spot.vehicle_number }}"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Date/Time of Parking:</label>
+            <input
+              type="text"
+              class="form-control"
+              value="{{ spot.parking_time }}"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Estimated Parking Cost:</label>
+            <input
+              type="text"
+              class="form-control"
+              value="{{ spot.estimated_cost }}"
+            />
+          </div>
+
+          <div class="text-center mt-4">
+            <a href="/user_dash" class="btn btn-secondary">Close</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

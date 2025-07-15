@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin - Parking Records</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container mt-4">
+      <h2>All Parking Records</h2>
+      <a href="/admin" class="btn btn-secondary mb-3">Back to Dashboard</a>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>User</th>
+            <th>Spot</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Duration</th>
+            <th>Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for record in reservations %}
+          <tr>
+            <td>{{ record.id }}</td>
+            <td>{{ record.User.username }}</td>
+            <td>{{ record.spot.id }}</td>
+            <td>{{ record.start_time }}</td>
+            <td>{{ record.end_time or "In Progress" }}</td>
+            <td>
+              {% if record.end_time %} {% set duration = (record.end_time -
+              record.start_time).total_seconds() %} {% set hours = (duration //
+              3600)|int %} {% set minutes = ((duration % 3600) // 60)|int %} {%
+              if hours > 0 %}{{ hours }}h {% endif %}{{ minutes }}m {% else %}
+              In Progress {% endif %}
+            </td>
+            <td>{{ record.cost or "N/A" }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

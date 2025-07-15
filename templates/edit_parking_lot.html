@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Edit Parking</title>
+    <link rel="stylesheet" href="/mad1_project/static/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="card shadow">
+        <div class="card-header bg-warning">
+          <strong>Edit Parking Lot</strong>
+        </div>
+        <div class="card-body">
+          <form method="POST" action="/edit_parking_lot/{{ lot.id }}">
+            <div class="mb-3">
+              <label for="Input1" class="form-label"
+                >Prime Location Name:</label
+              >
+              <input
+                type="text"
+                name="location_name"
+                id="Input1"
+                class="form-control"
+                value="{{ lot.location_name }}"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="Input2" class="form-label">Address:</label>
+              <textarea
+                name="address"
+                id="Input2"
+                class="form-control"
+                rows="3"
+              >
+                {{ lot.address }}</textarea
+              >
+            </div>
+
+            <div class="mb-3">
+              <label for="Input3" class="form-label">Pin Code:</label>
+              <input
+                type="text"
+                name="pin_code"
+                id="Input3"
+                class="form-control"
+                value="{{ lot.pincode }}"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="Input4" class="form-label">Price (per hour):</label>
+              <input
+                type="number"
+                name="price"
+                id="Input4"
+                class="form-control"
+                value="{{ lot.price_per_hour }}"
+                min="0"
+                step="0.01"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="Input5" class="form-label">Maximum Spots:</label>
+              <input
+                type="number"
+                name="max_spots"
+                id="Input5"
+                class="form-control"
+                value="{{ lot.max_spots }}"
+                min="1"
+                required
+              />
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <button type="submit" class="btn btn-primary">Update</button>
+              <a href="/admin" class="btn btn-secondary">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
